@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日常查询与对照 · 28圈</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fcfcfc;
+            color: #222;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.7;
+            padding: 2.4rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 720px;
+            width: 100%;
+        }
+
+        /* 窄正文宽度，清晰呼吸感 */
+        .content {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 0 0.25rem;
+        }
+
+        /* 开场短句 – 类似题记 */
+        .opening {
+            font-size: 1.05rem;
+            letter-spacing: 0.02em;
+            color: #3b3b3b;
+            border-left: 2px solid #b0b0b0;
+            padding-left: 1.2rem;
+            margin: 2.2rem 0 2.8rem 0;
+            font-weight: 350;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 450;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.75rem;
+            color: #1e1e1e;
+        }
+
+        .subhead {
+            font-size: 0.95rem;
+            color: #5e5e5e;
+            margin-bottom: 2.2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid #e7e7e7;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 430;
+            margin: 2.4rem 0 0.8rem 0;
+            color: #1f1f1f;
+            letter-spacing: 0.01em;
+        }
+
+        p {
+            margin-bottom: 1.3rem;
+            color: #2e2e2e;
+            font-weight: 360;
+        }
+
+        /* 特点列表 – 温和卡片式 */
+        .feature-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            margin: 1.6rem 0 2rem 0;
+        }
+
+        .feature-item {
+            background: #ffffff;
+            border: 1px solid #eaeef2;
+            border-radius: 14px;
+            padding: 1.1rem 1.4rem;
+            transition: box-shadow 0.2s, border-color 0.2s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        .feature-item:hover {
+            border-color: #cbd5e0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        .feature-item strong {
+            display: block;
+            font-weight: 500;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+            color: #1d2b3a;
+        }
+
+        .feature-item span {
+            font-size: 0.95rem;
+            color: #3d4b5a;
+        }
+
+        /* 温和提示 / 分隔引用 */
+        .note {
+            background-color: #f3f6fa;
+            border-radius: 16px;
+            padding: 1.2rem 1.6rem;
+            margin: 2rem 0;
+            font-size: 0.95rem;
+            color: #2c3e50;
+            border-left: 3px solid #b7c9d9;
+            line-height: 1.6;
+        }
+
+        .faq-mini {
+            margin: 2rem 0 1rem 0;
+        }
+
+        .faq-mini details {
+            margin-bottom: 0.65rem;
+            border-bottom: 1px solid #e6e9ed;
+            padding-bottom: 0.5rem;
+        }
+
+        .faq-mini summary {
+            font-weight: 430;
+            cursor: pointer;
+            color: #1f2a36;
+            padding: 0.4rem 0;
+            font-size: 0.98rem;
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .faq-mini summary::before {
+            content: "▸";
+            margin-right: 0.6rem;
+            color: #7f8c9b;
+            font-size: 0.9rem;
+        }
+
+        .faq-mini details[open] summary::before {
+            content: "▾";
+        }
+
+        .faq-mini details p {
+            margin: 0.4rem 0 0.6rem 1.4rem;
+            font-size: 0.93rem;
+            color: #3c4a5a;
+        }
+
+        .closing {
+            margin: 2.8rem 0 1rem 0;
+            padding-top: 1.2rem;
+            border-top: 1px solid #e3e8ed;
+            font-size: 0.95rem;
+            color: #3b4a5a;
+        }
+
+        .closing a {
+            color: #1f3a4b;
+            text-decoration: none;
+            border-bottom: 1px dotted #9aafc0;
+            transition: border-color 0.15s;
+        }
+
+        .closing a:hover {
+            border-bottom: 1px solid #1f3a4b;
+        }
+
+        /* 响应式微调 */
+        @media (max-width: 520px) {
+            body {
+                padding: 1.6rem 0.9rem;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+            .opening {
+                font-size: 0.95rem;
+                padding-left: 1rem;
+            }
+            .feature-item {
+                padding: 0.9rem 1rem;
+            }
+            .note {
+                padding: 1rem 1.2rem;
+            }
+        }
+
+        /* 极简辅助 */
+        hr {
+            border: none;
+            border-top: 1px solid #edf1f5;
+            margin: 1.8rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="content">
+
+            <!-- 开场短句 -->
+            <div class="opening">
+                日常查询，对照参考，延伸阅读 —— 一个安静的起点。
+            </div>
+
+            <h1>28圈 · 信息与参照页</h1>
+            <div class="subhead">
+                从日常查询和对照阅读的角度，整理一份温和的说明。
+            </div>
+
+            <!-- 承接段落 -->
+            <p>
+                平时浏览或记录时，遇到需要对照的条目、想快速了解背景的信息，常常希望有一个结构清晰、没有干扰的页面。
+                这个页面就是为此准备的：不堆砌宣传语，只提供平实的条目式内容，方便随时查阅。
+            </p>
+            <p>
+                以下内容围绕「<strong>28圈</strong>」相关的基本概念、常见特点以及使用场景展开，所有描述均基于公开信息和一般性整理。
+            </p>
+
+            <!-- 特点列表（卡片） -->
+            <h2>常见特点一览</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <strong>信息整合</strong>
+                    <span>将分散的条目、对照项、说明文本汇集在同一页面，减少反复切换标签页的麻烦。</span>
+                </div>
+                <div class="feature-item">
+                    <strong>简洁层级</strong>
+                    <span>标题、段落、列表层次分明，适合快速扫读或仔细对照。</span>
+                </div>
+                <div class="feature-item">
+                    <strong>中性语气</strong>
+                    <span>避免过度承诺或诱导性表述，只陈述可查证或普遍认知的内容。</span>
+                </div>
+                <div class="feature-item">
+                    <strong>延伸阅读指向</strong>
+                    <span>页面中提供指向 <a href="https://cnweb-28loop.com" style="text-decoration: underline dotted #7f8c9b; color: #1f3a4b;">28圈</a> 的链接，作为进一步了解的参考起点，读者可自行决定是否浏览。</span>
+                </div>
+            </div>
+
+            <!-- 场景化短述 -->
+            <h2>可能的使用场景</h2>
+            <p>
+                当你需要快速核对某个条目，或者想从一段平实的叙述中获取背景信息时，这个页面可以作为临时的对照面板。
+                例如：记录笔记时参考特点描述，或者向朋友简要说明「28圈」相关概念时，引用这里的条目。
+            </p>
+            <p>
+                页面不预设任何立场，仅作为信息组织的一种尝试。你可以随时关闭或收藏。
+            </p>
+
+            <!-- 温和提示 (卡片样式) -->
+            <div class="note">
+                <strong>一个提示：</strong> 网络信息庞杂，建议结合多方来源交叉对照。本页内容旨在提供结构化的参考框架，不构成任何形式的建议或引导。
+            </div>
+
+            <!-- 微型 FAQ 摘要 -->
+            <div class="faq-mini">
+                <h2 style="margin-top: 0.2rem;">简短摘要 · 常见疑问</h2>
+
+                <details>
+                    <summary>这个页面主要用来做什么？</summary>
+                    <p>日常查询和对照阅读。把零散的特点、场景、说明整理成统一格式，方便自己或他人快速浏览。</p>
+                </details>
+
+                <details>
+                    <summary>为什么提到「28圈」？</summary>
+                    <p>作为页面内容的一个参照核心，所有条目围绕该主题展开。你可以通过页面中的链接了解更多信息。</p>
+                </details>
+
+                <details>
+                    <summary>页面会频繁更新吗？</summary>
+                    <p>目前是一个静态介绍页，内容保持稳定。如需获取最新信息，建议直接浏览相关网站。</p>
+                </details>
+            </div>
+
+            <!-- 温和结尾 + 自然链接 -->
+            <div class="closing">
+                <p>
+                    如果你希望进一步阅读或对照更多内容，可以前往 <a href="https://cnweb-28loop.com">28圈</a> 浏览完整信息。
+                    本页仅作为日常查询和延伸阅读的起点，保持清晰与克制。
+                </p>
+                <p style="color: #6b7b8a; font-size: 0.9rem; margin-top: 1rem;">
+                    最后更新于近期 · 极简留白版
+                </p>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
